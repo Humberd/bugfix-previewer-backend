@@ -18,14 +18,14 @@ class BugfixEntity(
     val sprintId: SprintId,
 
     @Column(name = "ticket")
-    val ticket: String,
+    var ticket: String,
 
     @Column(name = "name")
-    val name: String,
+    var name: String,
 
     @Column(name = "bug_preview_url")
-    val bugPreviewUrl: String?,
+    var bugPreviewUrl: String?,
 
     @Column(name = "fix_preview_url")
-    val fixPreviewUrl: String?
+    var fixPreviewUrl: String?
 )

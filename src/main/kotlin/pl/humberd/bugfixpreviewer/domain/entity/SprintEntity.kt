@@ -15,8 +15,8 @@ class SprintEntity(
     val id: SprintId,
 
     @Column(name = "number")
-    val number: Int,
+    var number: Int,
 
     @Column(name = "name")
-    val name: String
+    var name: String
 )
