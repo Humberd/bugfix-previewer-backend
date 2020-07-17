@@ -1,6 +1,6 @@
 package pl.humberd.notesapp.application.common.asserts
 
-import pl.humberd.bugfixpreviewer.application.exceptions.AlreadyExistsException
+import pl.humberd.bugfixpreviewer.application.exception.AlreadyExistsException
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 

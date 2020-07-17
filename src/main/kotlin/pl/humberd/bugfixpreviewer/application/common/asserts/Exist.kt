@@ -1,6 +1,6 @@
 package pl.humberd.notesapp.application.common.asserts
 
-import pl.humberd.bugfixpreviewer.application.exceptions.NotFoundException
+import pl.humberd.bugfixpreviewer.application.exception.NotFoundException
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
