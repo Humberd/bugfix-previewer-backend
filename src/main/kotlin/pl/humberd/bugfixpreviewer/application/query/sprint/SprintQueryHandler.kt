@@ -35,9 +35,9 @@ class SprintQueryHandler(
         val sprint = sprintRepository.findByIdOrNull(id)
         ASSERT_NOT_NULL(sprint, id)
 
-        val bugfixes = bugfixRepository.findAllBySprintId(id)
+        val bugfixes = bugfixRepository.findAllBySprintId(id, Pageable.unpaged())
 
-        return mapToView(sprint, bugfixes)
+        return mapToView(sprint, bugfixes.content)
     }
 
     fun mapToView(
