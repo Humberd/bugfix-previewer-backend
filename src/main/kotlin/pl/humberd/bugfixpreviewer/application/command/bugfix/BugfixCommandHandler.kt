@@ -4,6 +4,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import pl.humberd.bugfixpreviewer.application.command.bugfix.model.BugfixCreateCommand
+import pl.humberd.bugfixpreviewer.application.command.bugfix.model.BugfixDeleteCommand
 import pl.humberd.bugfixpreviewer.application.command.bugfix.model.BugfixUpdateCommand
 import pl.humberd.bugfixpreviewer.domain.common.IdGenerator
 import pl.humberd.bugfixpreviewer.domain.entity.BugfixEntity
@@ -40,5 +41,9 @@ class BugfixCommandHandler(
             it.bugPreviewUrl = command.bugPreviewUrl
             it.fixPreviewUrl = command.fixPreviewUrl
         }
+    }
+
+    fun delete(command: BugfixDeleteCommand) {
+        bugfixRepository.deleteById(command.id)
     }
 }
