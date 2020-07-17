@@ -12,6 +12,7 @@ import pl.humberd.bugfixpreviewer.application.query.bugfix.BugfixQueryHandler
 import pl.humberd.bugfixpreviewer.application.query.bugfix.model.BugfixView
 import pl.humberd.bugfixpreviewer.domain.entity.BugfixEntity
 import pl.humberd.bugfixpreviewer.infrastructure.http.bugfix.model.BugfixUpdateRequest
+import javax.validation.Valid
 import kotlin.contracts.ExperimentalContracts
 
 @RestController
@@ -28,7 +29,7 @@ class BugfixHttpController(
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable("id") id: String, @RequestBody body: BugfixUpdateRequest): ResponseEntity<Void> {
+    fun update(@PathVariable("id") id: String, @RequestBody @Valid body: BugfixUpdateRequest): ResponseEntity<Void> {
         bugfixCommandHandler.update(
             BugfixUpdateCommand(
                 id = id,

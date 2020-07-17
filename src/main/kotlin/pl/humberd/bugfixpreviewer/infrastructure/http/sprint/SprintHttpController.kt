@@ -2,6 +2,7 @@ package pl.humberd.bugfixpreviewer.infrastructure.http.sprint
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import pl.humberd.bugfixpreviewer.application.command.bugfix.BugfixCommandHandler
 import pl.humberd.bugfixpreviewer.application.command.bugfix.model.BugfixCreateCommand
@@ -17,6 +18,7 @@ import pl.humberd.bugfixpreviewer.application.query.sprint.model.SprintView
 import pl.humberd.bugfixpreviewer.infrastructure.http.bugfix.model.BugfixCreateRequest
 import pl.humberd.bugfixpreviewer.infrastructure.http.sprint.model.SprintCreateRequest
 import pl.humberd.bugfixpreviewer.infrastructure.http.sprint.model.SprintUpdateRequest
+import javax.validation.Valid
 import kotlin.contracts.ExperimentalContracts
 
 @RestController
@@ -40,7 +42,7 @@ class SprintHttpController(
     }
 
     @PostMapping
-    fun create(@RequestBody body: SprintCreateRequest): ResponseEntity<Void> {
+    fun create(@RequestBody @Valid body: SprintCreateRequest): ResponseEntity<Void> {
         sprintCommandHandler.create(
             SprintCreateCommand(
                 number = body.number,
@@ -52,7 +54,7 @@ class SprintHttpController(
     }
 
     @PutMapping("/{id}")
-    fun update(@PathVariable("id") id: String, @RequestBody body: SprintUpdateRequest): ResponseEntity<Void> {
+    fun update(@PathVariable("id") id: String, @RequestBody @Valid body: SprintUpdateRequest): ResponseEntity<Void> {
         sprintCommandHandler.update(
             SprintUpdateCommand(
                 id = id,
@@ -81,7 +83,7 @@ class SprintHttpController(
     }
 
     @PostMapping("/{id}/bugfixes")
-    fun createBugfix(@PathVariable("id") id: String, @RequestBody body: BugfixCreateRequest): ResponseEntity<Void> {
+    fun createBugfix(@PathVariable("id") id: String, @RequestBody @Valid body: BugfixCreateRequest): ResponseEntity<Void> {
         bugfixCommandHandler.create(
             BugfixCreateCommand(
                 sprintId = id,
