@@ -1,6 +1,8 @@
 package pl.humberd.bugfixpreviewer.application.query.sprint
 
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import pl.humberd.bugfixpreviewer.application.common.list_view.DefaultViewList
@@ -35,7 +37,7 @@ class SprintQueryHandler(
         val sprint = sprintRepository.findByIdOrNull(id)
         ASSERT_NOT_NULL(sprint, id)
 
-        val bugfixes = bugfixRepository.findAllBySprintId(id, Pageable.unpaged())
+        val bugfixes = bugfixRepository.findAllBySprintId(id, PageRequest.of(0, 999, Sort.by(Sort.Order.asc("name"))))
 
         return mapToView(sprint, bugfixes.content)
     }
