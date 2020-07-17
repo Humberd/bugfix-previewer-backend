@@ -4,6 +4,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import pl.humberd.bugfixpreviewer.application.command.sprint.model.SprintCreateCommand
+import pl.humberd.bugfixpreviewer.application.command.sprint.model.SprintDeleteCommand
 import pl.humberd.bugfixpreviewer.application.command.sprint.model.SprintUpdateCommand
 import pl.humberd.bugfixpreviewer.domain.common.IdGenerator
 import pl.humberd.bugfixpreviewer.domain.entity.SprintEntity
@@ -35,5 +36,9 @@ class SprintCommandHandler(
             it.number = command.number
             it.name = command.name
         }
+    }
+
+    fun delete(command: SprintDeleteCommand) {
+        sprintRepository.deleteById(command.id)
     }
 }
