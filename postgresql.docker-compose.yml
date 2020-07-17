@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: bitnami/postgresql:12.2.0
+    restart: always
+    environment:
+      POSTGRESQL_USERNAME: admin
+      POSTGRESQL_PASSWORD: admin123
+      POSTGRESQL_DATABASE: bugfix-previewer
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8181:8080
