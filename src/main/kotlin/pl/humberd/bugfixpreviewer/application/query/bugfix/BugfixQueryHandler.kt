@@ -1,7 +1,6 @@
 package pl.humberd.bugfixpreviewer.application.query.bugfix
 
 import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
@@ -41,8 +40,8 @@ class BugfixQueryHandler(
             sprintId = entity.sprintId,
             name = entity.name,
             ticket = entity.ticket,
-            fixPreviewUrl = entity.fixPreviewUrl,
-            bugPreviewUrl = entity.bugPreviewUrl
+            fixPreviewUrl = if (entity.fixPreviewUrl != null) "http://localhost:8081/example-video-1.mp4" else null,
+            bugPreviewUrl = if (entity.bugPreviewUrl != null) "http://localhost:8081/example-video-1.mp4" else null
         )
     }
 }
