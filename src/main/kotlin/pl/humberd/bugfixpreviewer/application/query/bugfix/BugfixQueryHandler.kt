@@ -40,8 +40,8 @@ class BugfixQueryHandler(
             sprintId = entity.sprintId,
             name = entity.name,
             ticket = entity.ticket,
-            fixPreviewUrl = if (entity.fixPreviewUrl != null) "http://localhost:8081/example-video-1.mp4" else null,
-            bugPreviewUrl = if (entity.bugPreviewUrl != null) "http://localhost:8081/example-video-1.mp4" else null
+            fixPreviewUrl = entity.fixPreviewUrl,
+            bugPreviewUrl = entity.bugPreviewUrl
         )
     }
 }

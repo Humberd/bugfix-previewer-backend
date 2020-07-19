@@ -12,8 +12,7 @@ class FileCommandHandler(
 
     fun upload(command: FileUploadCommand): FileUploadResult {
         return FileUploadResult(
-//            url = awsS3Bridge.uploadFile(command.file)
-            url = "https://testmobilehub-hosting-mobilehub-825908255.s3.eu-central-1.amazonaws.com/example-video-1.mp4"
+            url = awsS3Bridge.uploadFile(command.file)
         )
     }
 }
