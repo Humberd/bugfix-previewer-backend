@@ -1,4 +1,4 @@
-FROM gradle:6.2.2-jdk11 AS builder
+FROM gradle:6.4.1-jdk11 AS builder
 WORKDIR /usr/project
 COPY . .
 RUN gradle build -x test
